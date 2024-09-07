@@ -87,6 +87,10 @@ func (mrg *MRG63k3a) Seed(seed int64) {
 	}
 }
 
+func (mrg *MRG63k3a) Uint64() uint64 {
+	return uint64(mrg.Int63())>>31 | uint64(mrg.Int63())<<32
+}
+
 // Int63 generates a (pseudo-)random 63bit value.  The output can be
 // used as a replacement for a sequence of independent, uniformly
 // distributed samples in the range 0, 1, ..., 2^63-6645 (m1).  This method is
